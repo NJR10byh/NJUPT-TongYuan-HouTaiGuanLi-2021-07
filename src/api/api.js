@@ -10,7 +10,7 @@ export default async (
   headers = {},
   responseType = ''
 ) => {
-  const baseURL = 'http://39.104.78.253/'
+  const baseURL = 'http://1.117.224.204/'
   try {
     return new Promise((success, error) => {
       console.log(baseURL + url)

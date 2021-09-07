@@ -21,6 +21,16 @@ export const constantRoutes = [
 
   {
     path: '/',
+    redirect: '/login',
+    children: [{
+      path: '/login',
+      name: '登录',
+      component: () => import('@/views/login/index')
+    }]
+  },
+
+  {
+    path: '/',
     component: Layout,
     redirect: '/Home',
     children: [{

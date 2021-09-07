@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard-container">
-    <div class="dashboard-text">当前用户：NJUPT</div>
+    <div class="dashboard-text">当前用户：admin</div>
   </div>
 </template>
 
