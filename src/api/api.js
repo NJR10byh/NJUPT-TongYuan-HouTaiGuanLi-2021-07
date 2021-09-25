@@ -13,7 +13,6 @@ export default async (
   const baseURL = 'http://1.117.224.204/'
   try {
     return new Promise((success, error) => {
-      console.log(baseURL + url)
       axios({
         url: baseURL + url,
         data,
@@ -29,6 +28,6 @@ export default async (
         })
     })
   } catch (res) {
-    console.log(res)
+    // console.log(res)
   }
 }

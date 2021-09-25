@@ -25,11 +25,11 @@ export default {
   mixins: [ResizeMixin],
   computed: {
     sidebar() {
-      console.log(this.$store.state.app.sidebar)
+      // console.log(this.$store.state.app.sidebar)
       return this.$store.state.app.sidebar
     },
     device() {
-      console.log(this.$store.state.app.device)
+      // console.log(this.$store.state.app.device)
       return this.$store.state.app.device
     },
     fixedHeader() {

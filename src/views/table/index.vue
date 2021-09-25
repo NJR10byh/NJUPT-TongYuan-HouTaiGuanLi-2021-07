@@ -53,9 +53,7 @@
         that.tableData = [];
         that.total = 0;
         let url = "teacher/queAllInfo?page=" + 1;
-        // console.log(url);
         await that.request(url, {}, "GET", {}).then((res) => {
-          console.log(res);
           that.total = res.data.count;
           for (let i = 0; i < res.data.data.length; i++) {
             // for (let i = 0; i < 10; i++) {
@@ -72,7 +70,6 @@
             type: "success",
           })
         }).catch((res) => {
-          console.log(res);
           this.$message({
             message: "数据请求失败",
             type: "error",
@@ -83,15 +80,13 @@
       // 导出
       exportExcel() {
         let that = this;
-        console.log(that.exporturl);
         that
           .request(that.exporturl, {}, 'GET', {}, 'blob')
           .then((res) => {
             that.$message({
-              message: "请求成功！",
+              message: "请求成功！请稍候.......",
               type: 'success'
             })
-            console.log(res)
             if (!res) return
             let blob = new Blob([res.data], {
               type: 'application/vnd.ms-excel;charset=utf-8'
@@ -114,14 +109,11 @@
           })
       },
       async handleCurrentPage(val) {
-        console.log(val);
         let that = this;
         that.tableData = [];
         that.total = 0;
         let url = "teacher/queAllInfo?page=" + val;
-        // console.log(url);
         await that.request(url, {}, "GET", {}).then((res) => {
-          console.log(res.data);
           that.total = res.data.count;
           for (let i = 0; i < res.data.data.length; i++) {
             let obj = {};
@@ -137,7 +129,6 @@
             type: "success",
           })
         }).catch((res) => {
-          console.log(res);
           this.$message({
             message: "数据请求失败",
             type: "error",
