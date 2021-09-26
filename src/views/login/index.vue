@@ -96,44 +96,36 @@ export default {
       });
     },
     handleLogin() {
-      if (new Date().getHours() == 9) {
-        if (this.loginForm.teacherName != '' && this.loginForm.teacherId != '') {
-          const that = this;
-          that
-            .request('teacher/Login', that.loginForm, 'POST', {})
-            .then(res => {
-              if (res.data.code == 0) {
-                this.$message({
-                  message: '登录成功',
-                  type: 'success'
-                });
-                this.$router.push({
-                  path: '/Home'
-                });
-              } else if (res.data.code == 1) {
-                this.$message({
-                  message: '教师名或者工号错误',
-                  type: 'error'
-                });
-              }
-            })
-            .catch(res => {
+      if (this.loginForm.teacherName != '' && this.loginForm.teacherId != '') {
+        const that = this;
+        that
+          .request('teacher/Login', that.loginForm, 'POST', {})
+          .then(res => {
+            if (res.data.code == 0) {
               this.$message({
-                message: res.data.errMessage,
+                message: '登录成功',
+                type: 'success'
+              });
+              this.$router.push({
+                path: '/Home'
+              });
+            } else if (res.data.code == 1) {
+              this.$message({
+                message: '教师名或者工号错误',
                 type: 'error'
               });
+            }
+          })
+          .catch(res => {
+            this.$message({
+              message: res.data.errMessage,
+              type: 'error'
             });
-        } else {  
-          this.$message({
-            message: '请填写用户名或密码',
-            type: 'warning'
           });
-        }
       } else {
         this.$message({
-          message: '当前仅限每日09:00 ~ 09:59登录',
-          type: 'warning',
-          duration: 3000
+          message: '请填写用户名或密码',
+          type: 'warning'
         });
       }
     }
